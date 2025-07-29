@@ -15,7 +15,7 @@ class ModulosControllers  {
             pageSize = pageSize ? pageSize : '';
         try {
             // const response = await getPerfilUsuarioMenu(idUsuario)
-            const apiUrl = `${url}/api/perfilUsuario/perfilUsuarioMenu.xsjs?idUsuario=${idUsuario}`;
+            const apiUrl = `http://164.152.245.77:8000/quality/concentrador_node/api/perfilUsuario/perfilUsuarioMenu.xsjs?idUsuario=${idUsuario}`;
             const response = await axios.get(apiUrl);
 
             return res.json(response.data); // Retorna
@@ -32,7 +32,7 @@ class ModulosControllers  {
         idMenuFilho = idMenuFilho ? idMenuFilho : '';
         try {
             // const response = await getPerfilMenuFilho(idUsuario, idMenuFilho)
-            const apiUrl = `${url}/api/perfilUsuario/menus-usuario-exececao.xsjs?idUsuario=${idUsuario}&idMenuFilho=${idMenuFilho}`;
+            const apiUrl = `http://164.152.245.77:8000/quality/concentrador_node/api/perfilUsuario/menus-usuario-exececao.xsjs?idUsuario=${idUsuario}&idMenuFilho=${idMenuFilho}`;
             const response = await axios.get(apiUrl);
   
             
@@ -66,7 +66,7 @@ class ModulosControllers  {
         idModulo = idModulo ? idModulo : '';
         dsModulo = dsModulo ? dsModulo : '';
         try {   
-            const response = await axios.get(`http://164.152.245.77:8000/quality/concentrador_homologacao/api/perfilUsuario/perfilUsuarioMenu.xsjs?idMenu=${idMenu}&idModulo=${idModulo}&dsModulo=${dsModulo}`)
+            const response = await axios.get(`http://164.152.245.77:8000/quality/concentrador_node/api/perfilUsuario/perfilUsuarioMenu.xsjs?idMenu=${idMenu}&idModulo=${idModulo}&dsModulo=${dsModulo}`)
 
             // const response = await getMenuUsuario(idMenu, idModulo, dsModulo);
             return res.json(response.data); // Retorna
@@ -133,7 +133,92 @@ class ModulosControllers  {
          
             // const response = await updateMenuFilho(dados)
          
-            const response = await axios.put(`${url}/api/perfilUsuario/perfilUsuarioMenu.xsjs`, {
+            const response = await axios.put(`http://164.152.245.77:8000/quality/concentrador_node/api/perfilUsuario/perfilUsuarioMenu.xsjs`, {
+                IDUSUARIO,
+                CRIAR,
+                ALTERAR,
+                STATIVO,
+                DATAULTIMAALTERACAO,
+                DATA_CRIACAO,
+                IDMODULO,
+                IDMODULOADMINISTRATIVO,
+                IDMODULOCOMERCIAL,
+                IDMODULOCONTABILIDADE,
+                IDMODULOFINANCEIRO,
+                IDMODULOGERENCIA,
+                IDMODULOINFORMATICA,
+                IDMODULOMARKETING,
+                IDMODULOCOMPRAS,
+                IDMODULOCADASTRO,
+                IDMODULOEXPEDICAO,
+                IDMODULOCOMPRASADM,
+                IDMODULOETIQUETAGEM,
+                IDMODULOCONFERENCIACEGA,
+                IDMODULOVOUCHER,
+                IDMODULOMALOTE,
+                IDMODULORH,
+                IDUSERULTIMAALTERACAO,
+                IDPERMISSAO,
+                IDMODULORESUMOVENDAS,
+                IDMODULOPROMOCAO,
+                ADMINISTRADOR,
+                N4,
+                N3,
+                N2,
+                N1,
+                IDMENU,
+                IDMENUFILHO,
+            });
+
+            return res.json(response.data);
+        } catch (error) {
+            console.error("Erro no ModulosControllers.putPerfilUsuarioMenu: ", error);
+            throw error;
+        }
+    }
+
+    async postPerfilUsuarioMenu(req, res) {
+        try {
+            let {
+                IDUSUARIO,
+                CRIAR,
+                ALTERAR,
+                STATIVO,
+                DATAULTIMAALTERACAO,
+                DATA_CRIACAO,
+                IDMODULO,
+                IDMODULOADMINISTRATIVO,
+                IDMODULOCOMERCIAL,
+                IDMODULOCONTABILIDADE,
+                IDMODULOFINANCEIRO,
+                IDMODULOGERENCIA,
+                IDMODULOINFORMATICA,
+                IDMODULOMARKETING,
+                IDMODULOCOMPRAS,
+                IDMODULOCADASTRO,
+                IDMODULOEXPEDICAO,
+                IDMODULOCOMPRASADM,
+                IDMODULOETIQUETAGEM,
+                IDMODULOCONFERENCIACEGA,
+                IDMODULOVOUCHER,
+                IDMODULOMALOTE,
+                IDMODULORH,
+                IDUSERULTIMAALTERACAO,
+                IDPERMISSAO,
+                IDMODULORESUMOVENDAS,
+                IDMODULOPROMOCAO,
+                ADMINISTRADOR,
+                N4,
+                N3,
+                N2,
+                N1,
+                IDMENU,
+                IDMENUFILHO,
+            } = req.body 
+         
+            // const response = await updateMenuFilho(dados)
+         
+            const response = await axios.post(`http://164.152.245.77:8000/quality/concentrador_node/api/perfilUsuario/perfilUsuarioMenu.xsjs`, {
                 IDUSUARIO,
                 CRIAR,
                 ALTERAR,
