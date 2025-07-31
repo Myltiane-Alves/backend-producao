@@ -715,6 +715,7 @@ routes.post('/criar-mecanica', PromocaoControllers.postMecanicaAtivas)
 routes.put('/desativar-produto-promocao-destino', PromocaoControllers.putProdutoDestinoPromocao)
 routes.put('/desativar-produto-promocao-origem', PromocaoControllers.putProdutoOrigemPromocao)
 routes.put('/desativar-empresa-promocao', PromocaoControllers.putEmpresaPromocao)
+routes.put('/desativar-status-promocao', PromocaoControllers.putStatusPromocao)
 // routes.post('/criar-mecanica', PromocaoControllers.postMecanicaAtivas)
 
 // // Logs
