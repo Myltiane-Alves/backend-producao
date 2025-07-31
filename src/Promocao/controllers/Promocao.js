@@ -284,7 +284,7 @@ class PromocaoControllers  {
             }]);
 
             return res.status(200).json({
-                message: "Empresa da Promoção atualizada com sucesso",
+                message: "Status da Promoção atualizada com sucesso",
                 data: response.data
             });
 
