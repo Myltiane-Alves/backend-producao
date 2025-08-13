@@ -11,6 +11,11 @@ import { getVendaCliente, getVendaDetalhe } from "../repositories/listaVendaClie
 import { updateAlterarVendaRecebimento } from "../repositories/atualizaRecebimentoVenda.js";
 import 'dotenv/config';
 const url = process.env.API_URL;
+import alterarVendaPagamentoSchema from '../schema/alteracaoPagamento.js';
+import { VendasClient } from "../client/index.js";
+import { VendasServices } from "../services/index.js";
+const vendaPagementoClient = new VendasClient(process.env.API_URL);
+const vendaPagamentoService = new VendasServices(vendaPagementoClient)
 
 class AdmVendasControllers {
     async getRecebimentosFormaPagamento(req, res) {
@@ -189,12 +194,33 @@ class AdmVendasControllers {
 
     async putAlterarVendasPagamento(req, res) {
         try {
-            const vendas = Array.isArray(req.body) ? req.body : [req.body]; 
-            const response = await  updateAlterarVendaPagamento(vendas);
-            return res.json(response);
+            const { error, value } = alterarVendaPagamentoSchema.validate(req.body, {
+                abortEarly: false,
+                stripUnknown: true
+            });
+      
+            if (error) {
+                return res.status(400).json({
+                    message: 'Dados inválidos',
+                    errors: error.details.map(detail => ({
+                        field: detail.path.join('.'),
+                        message: detail.message
+                    }))
+                });
+            }
+
+            const response = await vendaPagamentoService.updateVendaPagamento(
+                value.STCANCELADO,
+                value.DTULTIMAALTERACAO,
+                value.IDFUNCIONARIOCANCELA,
+                value.TXTMOTIVOCANCELA,
+                value.IDVENDA
+            )
+            
+            return res.status(200).json(response);
         } catch (error) {
-            console.error("Unable to connect to the database:", error);
-            return res.status(500).json({ error: error.message });
+            console.error("Erro no AdmVendasControllers.putAlterarVendasPagamento:", error);
+            return res.status(500).json({ error: 'Erro no servidor' });
         }
     }
 
