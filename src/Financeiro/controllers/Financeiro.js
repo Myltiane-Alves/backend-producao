@@ -35,6 +35,12 @@ import { getExtratoLojaPeriodo } from "../Extrato/repositories/extratoLojaPeriod
 // import { getVendas } from "../repositories/repositoriesVendaTotal.js";
 import 'dotenv/config';
 const url = process.env.API_URL;
+import { MaloteClient } from "../Malotes/client/index.js";
+import { MaloteService } from "../Malotes/services/index.js";
+
+const maloteClient = new MaloteClient(process.env.API_URL);
+const maloteService = new MaloteService(maloteClient);
+import maloteSchema from "../Malotes/schema/index.js";
 
 
 class FinanceiroControllers {
