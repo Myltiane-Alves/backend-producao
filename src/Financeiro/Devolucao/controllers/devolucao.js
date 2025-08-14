@@ -84,6 +84,8 @@ class DevolucaoControllers {
         });
       }
 
+
+      
       const response = await deevolucaoService.createMotivo(
         value.IDUSUARIO,
         value.DSMOTIVO
