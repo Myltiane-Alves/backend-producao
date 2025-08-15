@@ -633,7 +633,7 @@ routes.get('/alteracoes-de-precos-detalhes', ProdutoControllers.getListaAlteraca
 routes.get('/depositosLoja', DepositosLojaControllers.getListaDepositosLojaEmpresa)
 routes.get('/deposito-loja-empresa', DepositosLojaControllers.getListaDepositosLojaEmpresa)
 
-routes.post('/cadastrar-deposito-loja', DepositosLojaControllers.cadastroDepositoLoja)
+routes.post('/cadastrar-deposito-loja', DepositosLojaControllers.postDepositoLoja)
 // routes.post('/cadastrar-deposito-loja', DepositosLojaControllers.postListaDepositosLoja)
 routes.put('/atualizar-deposito-loja', DepositosLojaControllers.putListaDepositosLoja)
 
